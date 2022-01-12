@@ -5,39 +5,63 @@ import defaultImg from '../assets/images/default img.png';
 import ss from '../assets/images/anime-girl.gif';
 
 function LogReg() {
+    const [ConvertBTlogReg, setConvertBTlogReg] = useState('true');
+
+    const toRegis = () => {
+        setConvertBTlogReg(!ConvertBTlogReg);
+    };
+
     return (
         <div>
             {/* start form here */}
-            <form className="has-text-centered card-content p-4">
+            <form className={` has-text-centered card-content p-4 `}>
                 <div className="profileimg">
-                    <img className="is-rounded" src={ss} />
+                    <img className="is-rounded" src="" />
                 </div>
                 {/* log and register button Up  */}
-                <div className="has-text-centered logRedbtns  my-5">
+                <div className={`has-text-centered logRedbtns  my-5 `}>
                     <div>
                         {/* log button  */}
+
                         <span>
-                            <input className="inputRadio" name="aa" type="radio" id="log" onClick={() => {}} />
+                            <input
+                                className="inputRadio"
+                                name="aa"
+                                type="radio"
+                                id="log"
+                                onClick={() => {
+                                    toRegis();
+                                }}
+                            />
                             <label className="RadioLabel" htmlFor="log">
-                                loooog
+                                login
                             </label>
                         </span>
                         {/* register button  */}
                         <span>
-                            <input className="inputRadio" name="aa" type="radio" id="reg" defaultChecked />
+                            <input
+                                className="inputRadio"
+                                name="aa"
+                                type="radio"
+                                id="reg"
+                                defaultChecked
+                                onClick={() => {
+                                    toRegis();
+                                }}
+                            />
                             <label className="RadioLabel" htmlFor="reg">
-                                loooog
+                                register
                             </label>
                         </span>
                     </div>
                 </div>
                 {/* All inputs here  */}
-                <div className="has-text-left mt-3">
+                <div className={`has-text-left mt-3 ${ConvertBTlogReg ? '' : 'hideElement'}`}>
                     <label htmlFor="Fname">First Name</label>
                     <input className="input is-rounded noBorder" autoComplete="nope" type="text" id="Fname" />
                     <br />
                 </div>
-                <div className="has-text-left">
+                <div className={`has-text-left ${ConvertBTlogReg ? '' : 'hideElement'}`}>
                     <label htmlFor="Lname">Last Name</label>
                     <input className="input is-rounded noBorder" autoComplete="nope" type="text" id="Lname" /> <br />
                 </div>
@@ -50,8 +74,21 @@ function LogReg() {
                 </div>
                 <input id="password" className="input is-rounded noBorder" autoComplete="nope" type="password" /> <br />
                 {/* buttons to send data  */}
-                <button className="button is-info is-rounded mt-4">login</button>
-                <button className="button is-info is-rounded mt-4">register</button>
+                <button
+                    className={`button is-info is-rounded mt-4 ${ConvertBTlogReg ? 'hideElement' : ''}`}
+                    onClick={() => {
+                        alert('login done');
+                    }}>
+                    login
+                </button>
+                <button
+                    className={`button is-info is-rounded mt-4 ${ConvertBTlogReg ? '' : 'hideElement'}`}
+                    type="submit"
+                    onClick={() => {
+                        alert('register done');
+                    }}>
+                    register
+                </button>
             </form>
         </div>
     );

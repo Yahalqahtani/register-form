@@ -4,7 +4,7 @@ html {
 
 .logRedbtns {
     /* margin-right: 30px; */
-    padding-right: 15px;
+    padding-right: 0.9375rem;
 }
 
 .card {
@@ -12,7 +12,7 @@ html {
     height: fit-content;
     margin: auto;
     background-color: rgb(36, 36, 36);
-    border-radius: 10px;
+    border-radius: 0.625rem;
     margin-top: 10%;
 }
 .noBorder {
@@ -24,22 +24,26 @@ form {
     position: relative;
 }
 
+.hideElement {
+    display: none;
+}
+
 .profileimg {
-    height: 90px;
-    width: 90px;
+    height: 5.625rem;
+    width: 5.625rem;
     position: absolute;
     border-radius: 50%;
     overflow: hidden;
     background-color: rgb(172, 172, 207);
 
-    padding: 0px;
+    padding: 0rem;
 
-    top: -70px;
+    top: -4.375rem;
 
-    right: 125px;
+    right: 7.8125rem;
 
-    border: orange 2px solid;
-    box-shadow: 0px 0px 5px 1px #0ff;
+    border: orange 0.125rem solid;
+    box-shadow: 0rem 0rem 0.3125rem 0.0625rem #0ff;
 }
 .profileimg img {
     width: auto;
@@ -47,13 +51,13 @@ form {
 }
 
 input {
-    border: 0px;
+    border: 0rem;
 }
 
 input:focus {
     /* -webkit-box-shadow: #23bb44  !important; */
-    border-top: 0px;
-    border-bottom: 0px;
+    border-top: 0rem;
+    border-bottom: 0rem;
     /* padding: 20px; */
     /* border: blueviolet; */
 
@@ -66,20 +70,20 @@ input:focus {
         /* background-color: blueviolet; */
         /* box-shadow: chartreuse; */
         color: rgb(172, 167, 167);
-        border-inline-width: 0px;
+        border-inline-width: 0rem;
     }
     100% {
         color: rgb(182, 17, 17);
         /* border-inline-width: 4px ; */
         /* border-inline-color: red; */
-        box-shadow: 0px 0px 5px 1px #0ff;
+        box-shadow: 0rem 0rem 0.3125rem 0.0625rem #0ff;
     }
 }
 
 input:checked + label {
     /* animation: animationINPUT 0.8s infinite; */
     /* background-color: rgb(215, 196, 233); */
-    border-bottom: rgb(116, 189, 33) 2px solid;
+    border-bottom: rgb(116, 189, 33) 0.125rem solid;
     transition: color 0.6s ease-in, border-color 0.8s ease-in;
 }
 .RadioLabel {
@@ -103,5 +107,5 @@ input:checked + label {
     font-weight: 600;
     text-align: center;
 
-    transition: color 1.25s ease-out, background-color 1.25s ease-out, box-shadow 2.15s ease-out;
+    transition: color 1.25s ease-out, background-color 1.25s ease-out;
 }
