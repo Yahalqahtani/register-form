@@ -67,7 +67,7 @@ function LogReg() {
                 </div>
                 <div className="has-text-left">
                     <label htmlFor="Email">Email</label>
-                    <input className="input is-rounded noBorder" type="email" id="Email" /> <br />
+                    <input className="input is-rounded noBorder" type="email" id="Email" autoComplete="nope" /> <br />
                 </div>
                 <div className="has-text-left">
                     <label htmlFor="password">Password</label>

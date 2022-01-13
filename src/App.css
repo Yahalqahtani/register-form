@@ -34,16 +34,16 @@ form {
     position: absolute;
     border-radius: 50%;
     overflow: hidden;
-    background-color: rgb(172, 172, 207);
+    background-color: #338fc9;
 
     padding: 0rem;
 
-    top: -4.375rem;
+    top: -3.4375rem;
 
     right: 7.8125rem;
 
-    border: orange 0.125rem solid;
-    box-shadow: 0rem 0rem 0.3125rem 0.0625rem #0ff;
+    border: #37a8ee, 0.125rem solid;
+    box-shadow: 0rem 0rem 0.3125rem 0.0625rem #37a8ee;
 }
 .profileimg img {
     width: auto;
@@ -73,17 +73,17 @@ input:focus {
         border-inline-width: 0rem;
     }
     100% {
-        color: rgb(182, 17, 17);
+        color: #37a8ee;
         /* border-inline-width: 4px ; */
         /* border-inline-color: red; */
-        box-shadow: 0rem 0rem 0.3125rem 0.0625rem #0ff;
+        box-shadow: 0rem 0rem 0.3125rem 0.0625rem #37a8ee;
     }
 }
 
 input:checked + label {
     /* animation: animationINPUT 0.8s infinite; */
     /* background-color: rgb(215, 196, 233); */
-    border-bottom: rgb(116, 189, 33) 0.125rem solid;
+    border-bottom: #37a8ee 0.125rem solid;
     transition: color 0.6s ease-in, border-color 0.8s ease-in;
 }
 .RadioLabel {
@@ -108,4 +108,7 @@ input:checked + label {
     text-align: center;
 
     transition: color 1.25s ease-out, background-color 1.25s ease-out;
+}
+
+#Email {
 }
