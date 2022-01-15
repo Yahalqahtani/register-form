@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bulma/css/bulma.min.css';
 import '../App.css';
 import defaultImg from '../assets/images/default img.png';
 import ss from '../assets/images/anime-girl.gif';
+import { validateLogin } from './ValidateLogReg';
+import { validateRegister } from './ValidateLogReg';
 
 function LogReg() {
     const [ConvertBTlogReg, setConvertBTlogReg] = useState('true'); // change form login to register
@@ -10,20 +12,43 @@ function LogReg() {
 
     const dataObj = { imgUser: '', FirstName: '', LastName: '', Email: '', Password: '' }; //Data for test
     const [SaveFormData, setSaveFormData] = useState(dataObj); // save data user in this state
+    const [ErrorShow, setErrorShow] = useState({}); // show error message when need for user
+    const [SubmitDone, setSubmitDone] = useState(false);
 
-    // function to change ConvertBTlogReg state
+    //function change state error show and submit done
+    const handelSubmitLogin = e => {
+        setErrorShow(validateLogin(SaveFormData));
+        setSubmitDone(true);
+    };
+    //function handel submit to check on error input from user in register
+    const handelSubmitRegister = e => {
+        setErrorShow(validateRegister(SaveFormData));
+        setSubmitDone(true);
+    };
+    //useEffect to check on errors to sho message
+    useEffect(() => {
+        if (Object.keys(ErrorShow).length === 0 && SubmitDone) {
+        }
+    }, [ErrorShow]);
+
+    // function convert to Register
     const toRegis = () => {
-        setConvertBTlogReg(!ConvertBTlogReg);
+        setConvertBTlogReg(false);
+    };
+    // function convert to Login
+    const toLogin = () => {
+        setConvertBTlogReg(true);
     };
     // function to handle input data
     const handelInputData = e => {
         const { name, value } = e.target;
         setSaveFormData({ ...SaveFormData, [name]: value });
-
-        console.log(SaveFormData);
     };
+
     return (
         <div>
+            {/* //print data in jason top form */}
+            {/* <pre>{JSON.stringify(SaveFormData, undefined, 2)}</pre> */}
             {/* start form here */}
             <form className={` has-text-centered card-content p-4 `}>
                 <div className="profileimg">
@@ -37,31 +62,31 @@ function LogReg() {
                         <span>
                             <input
                                 className="inputRadio"
-                                name="aa"
+                                name="FormTo"
                                 type="radio"
-                                id="log"
+                                id="login"
                                 onClick={() => {
                                     toRegis();
                                 }}
                             />
-                            <label className="RadioLabel" htmlFor="log">
-                                login
+                            <label className="RadioLabel" htmlFor="login">
+                                Login
                             </label>
                         </span>
                         {/* register button  */}
                         <span>
                             <input
                                 className="inputRadio"
-                                name="aa"
+                                name="FormTo"
                                 type="radio"
-                                id="reg"
+                                id="register"
                                 defaultChecked
                                 onClick={() => {
-                                    toRegis();
+                                    toLogin();
                                 }}
                             />
-                            <label className="RadioLabel" htmlFor="reg">
-                                register
+                            <label className="RadioLabel" htmlFor="register">
+                                Register
                             </label>
                         </span>
                     </div>
@@ -81,6 +106,7 @@ function LogReg() {
                         onChange={handelInputData}
                     />
                     <br />
+                    <p>{ErrorShow.FirstName}</p>
                 </div>
                 <div className={`has-text-left ${ConvertBTlogReg ? '' : 'hideElement'}`}>
                     <label htmlFor="Lname">Last Name</label>
@@ -94,6 +120,7 @@ function LogReg() {
                         onChange={handelInputData}
                     />
                     <br />
+                    <p>{ErrorShow.LastName}</p>
                 </div>
                 <div className="has-text-left">
                     <label htmlFor="Email">Email</label>
@@ -108,6 +135,7 @@ function LogReg() {
                     />
 
                     <br />
+                    <p>{ErrorShow.Email}</p>
                 </div>
                 <div className="has-text-left">
                     <label htmlFor="password">Password</label>
@@ -122,15 +150,17 @@ function LogReg() {
                     onChange={handelInputData}
                 />
                 <br />
-                {/* buttons to send data  */}
+                <p>{ErrorShow.Password}</p>
+                {/* //! buttons to send data  */}
                 <button
                     className={`button is-info is-rounded mt-4 ${ConvertBTlogReg ? 'hideElement' : ''}`}
                     onClick={e => {
                         e.preventDefault();
 
                         alert('login done');
+                        handelSubmitLogin();
                     }}>
-                    login
+                    Login
                 </button>
                 <button
                     className={`button is-info is-rounded mt-4 ${ConvertBTlogReg ? '' : 'hideElement'}`}
@@ -138,8 +168,9 @@ function LogReg() {
                     onClick={e => {
                         e.preventDefault();
                         alert('register done');
+                        handelSubmitRegister();
                     }}>
-                    register
+                    Register
                 </button>
             </form>
         </div>
