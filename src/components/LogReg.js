@@ -5,6 +5,7 @@ import defaultImg from '../assets/images/default img.png';
 import ss from '../assets/images/anime-girl.gif';
 import { validateLogin } from './ValidateLogReg';
 import { validateRegister } from './ValidateLogReg';
+import { users } from './datatest';
 
 function LogReg() {
     const [ConvertBTlogReg, setConvertBTlogReg] = useState('true'); // change form login to register
@@ -14,7 +15,10 @@ function LogReg() {
     const [SaveFormData, setSaveFormData] = useState(dataObj); // save data user in this state
     const [ErrorShow, setErrorShow] = useState({}); // show error message when need for user
     const [SubmitDone, setSubmitDone] = useState(false);
-
+    const [showImgUser, setshowImgUser] = useState(''); // to show img if email true
+    const checkImg = () => {
+        setshowImgUser();
+    };
     //function change state error show and submit done
     const handelSubmitLogin = e => {
         setErrorShow(validateLogin(SaveFormData));
@@ -42,7 +46,9 @@ function LogReg() {
     // function to handle input data
     const handelInputData = e => {
         const { name, value } = e.target;
+
         setSaveFormData({ ...SaveFormData, [name]: value });
+        checkImg();
     };
 
     return (
@@ -52,7 +58,7 @@ function LogReg() {
             {/* start form here */}
             <form className={` has-text-centered card-content p-4 `}>
                 <div className="profileimg">
-                    <img className="is-rounded" src={SaveFormData.imgUser} />
+                    <img className="is-rounded" src={showImgUser} />
                 </div>
                 {/* log and register button Up  */}
                 <div className={`has-text-centered logRedbtns  my-5 `}>
@@ -157,7 +163,6 @@ function LogReg() {
                     onClick={e => {
                         e.preventDefault();
 
-                        alert('login done');
                         handelSubmitLogin();
                     }}>
                     Login
@@ -167,7 +172,7 @@ function LogReg() {
                     type="submit"
                     onClick={e => {
                         e.preventDefault();
-                        alert('register done');
+
                         handelSubmitRegister();
                     }}>
                     Register

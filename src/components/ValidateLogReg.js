@@ -5,11 +5,12 @@ export const validateLogin = values => {
     if (!values.Email) {
         errors.Email = 'Email Required';
     } else if (!regex.test(values.Email)) {
-        errors.Email('This is not a valid email format');
+        errors.Email = 'This is not a valid email format';
     }
+
     if (!values.Password) {
         errors.Password = 'Password Required';
-    } else if (values.Password.length < 4) {
+    } else if (values.Password.length < 6) {
         errors.Password = 'The password should be more than 4 Charecters';
     } else if (values.Password.length > 12) {
         errors.Password = 'Password maximum 12 charecters';
