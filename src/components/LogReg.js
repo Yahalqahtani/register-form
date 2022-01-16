@@ -16,9 +16,7 @@ function LogReg() {
     const [ErrorShow, setErrorShow] = useState({}); // show error message when need for user
     const [SubmitDone, setSubmitDone] = useState(false);
     const [showImgUser, setshowImgUser] = useState(''); // to show img if email true
-    const checkImg = () => {
-        setshowImgUser();
-    };
+
     //function change state error show and submit done
     const handelSubmitLogin = e => {
         setErrorShow(validateLogin(SaveFormData));
@@ -48,7 +46,6 @@ function LogReg() {
         const { name, value } = e.target;
 
         setSaveFormData({ ...SaveFormData, [name]: value });
-        checkImg();
     };
 
     return (
