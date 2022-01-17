@@ -40,7 +40,7 @@ form {
     border-radius: 50%;
     overflow: hidden;
     background-color: #338fc9;
-
+    box-shadow: 0px;
     padding: 0rem;
 
     top: -3.4375rem;
@@ -51,8 +51,8 @@ form {
     box-shadow: 0rem 0rem 0.3125rem 0.0625rem #37a8ee;
 }
 .profileimg img {
+    height: 110%;
     width: auto;
-    height: auto;
 }
 
 input {

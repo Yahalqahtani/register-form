@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bulma/css/bulma.min.css';
 import '../App.css';
-import defaultImg from '../assets/images/default img.png';
-import ss from '../assets/images/anime-girl.gif';
+
 import { validateLogin } from './ValidateLogReg';
 import { validateRegister } from './ValidateLogReg';
 import { users } from './datatest';
@@ -15,7 +14,8 @@ function LogReg() {
     const [SaveFormData, setSaveFormData] = useState(dataObj); // save data user in this state
     const [ErrorShow, setErrorShow] = useState({}); // show error message when need for user
     const [SubmitDone, setSubmitDone] = useState(false);
-    const [showImgUser, setshowImgUser] = useState(''); // to show img if email true
+    const [showImgUser, setshowImgUser] = useState(); // to show img if email true
+    const [emailstore, setemailstore] = useState('');
 
     //function change state error show and submit done
     const handelSubmitLogin = e => {
@@ -46,7 +46,31 @@ function LogReg() {
         const { name, value } = e.target;
 
         setSaveFormData({ ...SaveFormData, [name]: value });
+        emailvalue();
+        setshowImgUser(bb);
     };
+
+    //store email value in state
+    const emailvalue = () => {
+        setemailstore(SaveFormData.Email);
+        // const v = users.find(e => {
+        //     e.Email == SaveFormData.Email;
+        // });
+        // return v;
+        // const w = _.find(users, function () {
+        //     return users.Email === SaveFormData.Email;
+        // });
+    };
+    // function to filter based on email input
+    const bb = users
+        .filter(e => {
+            if (emailstore == e.Email) {
+                return e;
+            }
+        })
+        .map(e => {
+            return e.imgUser;
+        });
 
     return (
         <div>
